@@ -30,6 +30,8 @@ pub fn main() !void {
         try left_list.append(left_num);
         try right_list.append(right_num);
     }
+
+    // Sorting both arrays
     std.mem.sort(u32, left_list.items, {}, comptime std.sort.asc(u32));
     std.mem.sort(u32, right_list.items, {}, comptime std.sort.asc(u32));
 
