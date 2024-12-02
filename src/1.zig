@@ -33,6 +33,7 @@ pub fn main() !void {
     std.mem.sort(u32, left_list.items, {}, comptime std.sort.asc(u32));
     std.mem.sort(u32, right_list.items, {}, comptime std.sort.asc(u32));
 
+    // Part 1
     var total: u32 = 0;
     for (left_list.items, right_list.items) |left, right| {
         if (left > right) {
@@ -44,5 +45,18 @@ pub fn main() !void {
         }
     }
 
-    std.debug.print("Total Distance: {d}\n", .{total});
+    // Part 2
+    var similarity: u32 = 0;
+    var similarity_score: u32 = 0;
+    for (left_list.items) |left| {
+        for (right_list.items) |right| {
+            if (left == right) {
+                similarity += 1;
+            }
+        }
+        similarity_score += left * similarity;
+        similarity = 0;
+    }
+
+    std.debug.print("Similarity Score: {d}\n", .{similarity_score});
 }
