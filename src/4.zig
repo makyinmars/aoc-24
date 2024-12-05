@@ -80,7 +80,7 @@ fn checkWord(grid: std.ArrayList([]u8), row: i32, col: i32, dir: Direction, word
     return true;
 }
 
-fn findWord(grid: std.ArrayList([]u8)) u32 {
+fn findXMASWord(grid: std.ArrayList([]u8)) u32 {
     var count: u32 = 0;
     const rows: i32 = @intCast(grid.items.len);
     if (rows == 0) return 0;
@@ -102,7 +102,7 @@ fn findWord(grid: std.ArrayList([]u8)) u32 {
     return count;
 }
 
-fn findXMAS(grid: std.ArrayList([]u8)) u32 {
+fn findXMASShape(grid: std.ArrayList([]u8)) u32 {
     var count: u32 = 0;
     const rows: i32 = @intCast(grid.items.len);
     if (rows == 0) return 0;
@@ -157,8 +157,8 @@ pub fn main() !void {
         grid.deinit();
     }
 
-    const x_mas_word_count = findWord(grid);
-    const x_mas_count = findXMAS(grid);
+    const x_mas_word_count = findXMASWord(grid);
+    const x_mas_count = findXMASShape(grid);
 
     std.debug.print("Count 1: {d}, Count 2: {d}\n", .{ x_mas_word_count, x_mas_count });
 }
